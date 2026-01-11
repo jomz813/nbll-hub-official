@@ -13,7 +13,7 @@ export const hallOfFameMembers: HOFMember[] = [
     image: '/hof/pansho.gif',
     awards: ['HOF', '5x CHAMP', '1x MVP', '2x FMVP', '3x OPOTY', '1x ROTY', '4x AS', '7x POTS', '25x+ POTG', '13x DPOTG'],
     stats: '2,278 PTS • 341 AST • 134 REB • 177 STL',
-    description: "Pansho is one of the most prolific scorers in BL history. His five rings are more than any other player’s, and his 2,250+ career points (and counting) rank him 8th on the all-time scoring list. Pansho is arguably the greatest to ever touch the game. (I’m glazing)."
+    description: "Pansho is one of the most prolific scorers in BL history. His five rings are more than any other player’s, and his 2,250+ career points rank him 8th on the all-time scoring list. Pansho is arguably the greatest to ever touch the game. (I’m glazing)."
   },
   { 
     name: 'Tend',
