@@ -10,6 +10,10 @@ export const creditsData: CreditSection[] = [
     names: ['sinful']
   },
   {
+    title: 'CO-OWNERS',
+    names: ['punkmonk', 'ghost', 'colt', 'dave']
+  },
+  {
     title: 'BOARD OF DIRECTORS',
     names: ['suki', 'gainai', 'jomz', 'ghost']
   },
@@ -42,3 +46,4 @@ export const creditsData: CreditSection[] = [
     names: ['jomz']
   }
 ];
+
