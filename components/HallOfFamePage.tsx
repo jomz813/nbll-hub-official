@@ -83,7 +83,7 @@ const HOFCard: React.FC<{ member: HOFMember }> = ({ member }) => {
               
               {/* Floating Badge */}
               <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 dark:bg-black/80 backdrop-blur-md rounded-full border border-zinc-200 dark:border-zinc-700 shadow-sm">
-                <span className="text-[9px] font-black text-zinc-500 dark:text-zinc-300 tracking-widest uppercase">legend</span>
+                <span className="text-[9px] font-black text-zinc-500 dark:text-zinc-300 tracking-widest uppercase">flip</span>
               </div>
               
               {/* Name Overlay (Bottom of Image) */}
@@ -104,12 +104,6 @@ const HOFCard: React.FC<{ member: HOFMember }> = ({ member }) => {
                  <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 italic leading-relaxed">
                    {member.description || "Description coming soon."}
                  </p>
-              </div>
-              
-              <div className="flex justify-end">
-                <span className="text-[9px] font-black text-zinc-300 dark:text-zinc-600 uppercase tracking-widest group-hover:text-[#D4AF37] transition-colors">
-                  Click
-                </span>
               </div>
            </div>
         </div>
@@ -145,14 +139,14 @@ const HOFCard: React.FC<{ member: HOFMember }> = ({ member }) => {
 
               {/* Stats Panel - Grows to fill space */}
               <div className="flex-1 flex flex-col min-h-0">
-                 <div className="h-full w-full bg-black/40 border border-[#D4AF37]/20 rounded-2xl p-2 md:p-4 backdrop-blur-sm shadow-inner flex flex-col">
-                    <div className="grid grid-cols-2 gap-x-4 gap-y-2 md:gap-y-4 flex-1 items-center content-center">
+                 <div className="h-full w-full bg-black/40 border border-[#D4AF37]/20 rounded-2xl p-2 md:p-3 backdrop-blur-sm shadow-inner flex flex-col">
+                    <div className="grid grid-cols-2 gap-x-4 gap-y-2 md:gap-y-2 flex-1 items-center content-center">
                        {member.stats?.split(' • ').map((stat, sIdx) => {
                          const [val, label] = stat.split(' ');
                          return (
-                           <div key={sIdx} className="flex flex-col items-center justify-center p-2">
-                             <span className="text-3xl lg:text-4xl font-black text-white leading-none tracking-tight drop-shadow-md">{val}</span>
-                             <span className="text-[9px] md:text-[10px] font-black text-[#D4AF37] uppercase tracking-widest opacity-90 mt-1.5">{label}</span>
+                           <div key={sIdx} className="flex flex-col items-center justify-center p-1 md:p-0">
+                             <span className="text-3xl md:text-3xl lg:text-3xl xl:text-4xl font-black text-white leading-none tracking-tight drop-shadow-md">{val}</span>
+                             <span className="text-[9px] md:text-[10px] font-black text-[#D4AF37] uppercase tracking-widest opacity-90 mt-1">{label}</span>
                            </div>
                          );
                        })}
@@ -201,3 +195,4 @@ const HallOfFamePage: React.FC = () => {
 };
 
 export default HallOfFamePage;
+
