@@ -1,16 +1,18 @@
-
 import React, { useRef, useState } from 'react';
 import { recordsData } from '../data/records';
 import VeinsMilkEasterEgg from './VeinsMilkEasterEgg';
 import { useSettings } from '../context/SettingsContext';
 
 const RecordsPage: React.FC = () => {
-  const accentText = 'text-[#D60A07]';
-  const accentBgSoft = 'bg-[#D60A07]/5 dark:bg-[#D60A07]/10';
+  const { settings, getThemeColors } = useSettings();
+  const colors = getThemeColors();
+  
+  const accentText = colors.text;
+  const accentBgSoft = colors.bgSoft;
+  const valueColorClass = colors.text;
 
   const sectionRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const [isEasterEggPlaying, setIsEasterEggPlaying] = useState(false);
-  const { settings } = useSettings();
 
   const scrollToSection = (id: string) => {
     const el = sectionRefs.current[id];
@@ -47,8 +49,9 @@ const RecordsPage: React.FC = () => {
               className={`
                 px-5 py-2.5 rounded-full text-[11px] font-black uppercase tracking-widest border transition-all duration-300
                 border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-900 text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200 hover:border-zinc-300 dark:hover:border-zinc-600
-                focus:outline-none focus:ring-2 focus:ring-[#D60A07]/20 active:scale-95
+                focus:outline-none focus:ring-2 focus:ring-current/20 active:scale-95
               `}
+              style={{ '--tw-ring-color': settings.rahBizzyTheme ? '#3B82F6' : '#D60A07' } as React.CSSProperties}
             >
               {section.id === 'career-adv' 
                 ? 'CAREER+' 
@@ -90,7 +93,7 @@ const RecordsPage: React.FC = () => {
                       {/* Top: Icon + Title */}
                       <div className="flex items-start gap-3">
                         <div className="w-8 h-8 rounded-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700/50 flex items-center justify-center shrink-0">
-                            <div className="w-1 h-1 rounded-full bg-[#D60A07]" />
+                            <div className={`w-1 h-1 rounded-full ${settings.rahBizzyTheme ? 'bg-[#3B82F6]' : 'bg-[#D60A07]'}`} />
                         </div>
                         <span className="text-sm font-bold text-zinc-900 dark:text-zinc-100 leading-snug">
                           {record.title}
@@ -106,12 +109,12 @@ const RecordsPage: React.FC = () => {
                                onClick={handleVeinyClick}
                                disabled={isEasterEggPlaying}
                                aria-label="Trigger veins easter egg"
-                               className="text-3xl font-black text-zinc-800 dark:text-zinc-200 tabular-nums tracking-tighter leading-none hover:text-[#D60A07] transition-colors cursor-pointer text-left"
+                               className={`text-3xl font-black ${valueColorClass} tabular-nums tracking-tighter leading-none cursor-pointer text-left focus:outline-none`}
                              >
                                {record.value}
                              </button>
                            ) : (
-                             <span className="text-3xl font-black text-zinc-800 dark:text-zinc-200 tabular-nums tracking-tighter leading-none">
+                             <span className={`text-3xl font-black ${valueColorClass} tabular-nums tracking-tighter leading-none`}>
                                {record.value}
                              </span>
                            )}
@@ -127,7 +130,7 @@ const RecordsPage: React.FC = () => {
                              {record.holder}
                            </span>
                            {record.context && record.context !== '—' && (
-                             <span className="text-[9px] font-bold text-[#D60A07] mt-0.5 lowercase tracking-wide">
+                             <span className={`text-[9px] font-bold ${accentText} mt-0.5 lowercase tracking-wide`}>
                                {record.context}
                              </span>
                            )}
@@ -137,12 +140,13 @@ const RecordsPage: React.FC = () => {
 
                     {/* DESKTOP CARD (Original) */}
                     <div 
-                      className="hidden md:flex group relative flex-col md:flex-row items-stretch md:items-center bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-[2rem] p-6 gap-6 md:gap-10 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-[#D60A07]/20"
+                      className="hidden md:flex group relative flex-col md:flex-row items-stretch md:items-center bg-white dark:bg-zinc-900 border border-zinc-100 dark:border-zinc-800 rounded-[2rem] p-6 gap-6 md:gap-10 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 hover:border-current/20"
+                      style={{ '--tw-border-opacity': '0.2' } as React.CSSProperties}
                     >
                       {/* Left: Title */}
                       <div className="flex items-center gap-4 md:w-1/3">
                         <div className="w-10 h-10 rounded-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-100 dark:border-zinc-700/50 flex items-center justify-center shrink-0">
-                           <div className="w-1.5 h-1.5 rounded-full bg-[#D60A07] group-hover:scale-125 transition-transform" />
+                           <div className={`w-1.5 h-1.5 rounded-full ${settings.rahBizzyTheme ? 'bg-[#3B82F6]' : 'bg-[#D60A07]'} group-hover:scale-125 transition-transform`} />
                         </div>
                         <span className="text-sm md:text-base font-bold text-zinc-900 dark:text-zinc-100 leading-tight">
                           {record.title}
@@ -157,12 +161,12 @@ const RecordsPage: React.FC = () => {
                              onClick={handleVeinyClick}
                              disabled={isEasterEggPlaying}
                              aria-label="Trigger veins easter egg"
-                             className="text-4xl md:text-5xl font-black text-zinc-200 dark:text-zinc-700 tabular-nums tracking-tighter group-hover:text-[#D60A07]/80 transition-all cursor-pointer hover:scale-110 active:scale-95 duration-200 focus:outline-none"
+                             className={`text-4xl md:text-5xl font-black ${valueColorClass} tabular-nums tracking-tighter cursor-pointer hover:scale-110 active:scale-95 transition-transform duration-200 focus:outline-none`}
                            >
                              {record.value}
                            </button>
                         ) : (
-                           <span className="text-4xl md:text-5xl font-black text-zinc-200 dark:text-zinc-700 tabular-nums tracking-tighter group-hover:text-[#D60A07]/80 transition-colors">
+                           <span className={`text-4xl md:text-5xl font-black ${valueColorClass} tabular-nums tracking-tighter`}>
                              {record.value}
                            </span>
                         )}
@@ -184,7 +188,7 @@ const RecordsPage: React.FC = () => {
                              {record.team && <span>{record.team}</span>}
                              {record.team && record.context && <span className="w-1 h-1 rounded-full bg-zinc-300 dark:bg-zinc-700" />}
                              {record.context && (
-                               <span className={record.context.includes('counting') || record.context.includes('2x') ? 'text-[#D60A07] font-bold lowercase' : ''}>
+                               <span className={record.context.includes('counting') || record.context.includes('2x') ? `${accentText} font-bold lowercase` : ''}>
                                  {record.context}
                                </span>
                              )}
@@ -193,7 +197,10 @@ const RecordsPage: React.FC = () => {
                       </div>
                       
                       {/* Hover effect gradient */}
-                      <div className="absolute inset-0 rounded-[2rem] bg-gradient-to-r from-[#D60A07]/0 via-[#D60A07]/[0.02] to-[#D60A07]/0 opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity" />
+                      <div 
+                        className="absolute inset-0 rounded-[2rem] bg-gradient-to-r from-transparent via-current to-transparent opacity-0 group-hover:opacity-[0.02] pointer-events-none transition-opacity"
+                        style={{ color: settings.rahBizzyTheme ? '#3B82F6' : '#D60A07' } as React.CSSProperties}
+                      />
                     </div>
                   </React.Fragment>
                 );
@@ -205,7 +212,7 @@ const RecordsPage: React.FC = () => {
       
       {/* Footer hint */}
       <div className="flex items-center justify-center gap-2 pb-8 opacity-50">
-         <span className="w-1.5 h-1.5 rounded-full bg-[#D60A07] animate-pulse" />
+         <span className={`w-1.5 h-1.5 rounded-full ${settings.rahBizzyTheme ? 'bg-[#3B82F6]' : 'bg-[#D60A07]'} animate-pulse`} />
          <span className="text-[10px] font-black uppercase tracking-widest text-zinc-400 dark:text-zinc-500">
            Records update periodically
          </span>
