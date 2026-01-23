@@ -10,7 +10,7 @@ interface HistorySeason {
 }
 
 const historyData: HistorySeason[] = [
-  { id: 11, champion: 'Pending', mvp: 'Pending', isPending: true },
+  { id: 11, champion: 'Milwaukee Bucks', mvp: 'Aim' },
   { id: 10, champion: 'Miami Heat', mvp: 'Pansho' },
   { id: 9, champion: 'Cleveland Cavaliers', mvp: 'Packed' },
   { id: 8, champion: 'New York Knicks', mvp: 'Aim' },
@@ -88,3 +88,4 @@ const HistoryPage: React.FC = () => {
 };
 
 export default HistoryPage;
+
