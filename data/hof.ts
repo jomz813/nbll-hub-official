@@ -12,26 +12,26 @@ export const hallOfFameMembers: HOFMember[] = [
     name: 'Pansho',
     image: '/hof/pansho.gif',
     awards: ['HOF', '5x CHAMP', '1x MVP', '2x FMVP', '3x OPOTY', '1x ROTY', '4x AS', '7x POTS', '25x+ POTG', '13x DPOTG'],
-    stats: '2,278 PTS • 341 AST • 134 REB • 177 STL',
+    stats: '2,332 PTS • 351 AST • 139 REB • 180 STL',
     description: "Pansho is one of the most prolific scorers in BL history. His five rings are more than any other player’s, and his 2,250+ career points rank him 8th on the all-time scoring list. Pansho is arguably the greatest to ever touch the game. (I’m glazing)."
   },
   { 
     name: 'Tend',
     image: '/hof/tend.gif',
     awards: ['HOF', '2x CHAMP', '2x FMVP', '1x ROTY', '1x MIP', '3x AS', '2x RS', '2x POTS', '15x+ POTG', '15x+ DPOTG'],
-    stats: '1,712 PTS • 745 AST • 192 REB • 140 STL'
+    stats: '1,757 PTS • 869 AST • 205 REB • 158 STL'
   },
   { 
     name: 'Packed',
     image: '/hof/packed2.gif',
     awards: ['HOF', '2x CHAMP', '1x FMVP', '4x AS', '25x+ POTG', '3x DPOTG'],
-    stats: '2,784 PTS • 153 AST • 140 REB • 126 STL'
+    stats: '3,008 PTS • 170 AST • 161 REB • 136 STL'
   },
   { 
     name: 'Marsh',
     image: '/hof/marsh2.gif',
     awards: ['HOF', '2x CHAMP', '1x MVP', '1x FMVP', '1x DPOTY', '1x POTS', '15x+ DPOTG'],
-    stats: '1,712 PTS • 745 AST • 192 REB • 140 STL'
+    stats: '2,489 PTS • 1,062 AST • 186 REB • 423 STL'
   },
   { 
     name: 'Dannygreen',
@@ -43,30 +43,32 @@ export const hallOfFameMembers: HOFMember[] = [
     name: '1luv',
     image: '/hof/1luv.gif',
     awards: ['HOF', '3x CHAMP', '4x AS', '2x POTG', '15x+ DPOTG'],
-    stats: '351 PTS • 479 AST • 106 REB • 113 STL'
+    stats: '463 PTS • 589 AST • 135 REB • 165 STL'
   },
   { 
     name: 'Rah',
     image: '/hof/rah.gif',
-    awards: ['HOF', '2x CHAMP', '1x FMVP', '4x AS', '2x RS', '7x POTS', '25x+ POTG', '15x+ DPOTG'],
-    stats: '1,900 PTS • 194 AST • 183 REB • 239 STL'
+    awards: ['HOF', '2x CHAMP', '1x MVP' '1x FMVP', '4x AS', '2x RS', '7x POTS', '25x+ POTG', '15x+ DPOTG'],
+    stats: '2,743 PTS • 221 AST • 244 REB • 315 STL'
   },
   { 
     name: 'Dre',
     image: '/hof/dre2.gif',
-    awards: ['HOF', '2x CHAMP', '1x 5MOTY', '1x MIP', '3x AS', '2x RS', '1x POTS', '19x POTG', '5x DPOTG', '1X VEINY DIH'],
-    stats: '2,076 PTS • 169 AST • 111 REB • 74 STL'
+    awards: ['HOF', '2x CHAMP', '1x 5MOTY', '1x TMOTY', '1x MIP', '3x AS', '2x RS', '1x POTS', '19x POTG', '5x DPOTG'],
+    stats: '2,286 PTS • 429 AST • 151 REB • 124 STL'
   },
   { 
     name: 'Soulz',
     image: '/hof/soulz.gif',
-    awards: ['HOF', '2x CHAMP', '1x DPOTY', '3x AS', '3x RS', '25x+ POTG', '5x DPOTG'],
-    stats: '3,453 PTS • 811 AST • 191 REB • 209 STL'
+    awards: ['HOF', '2x CHAMP', '1x OPOTY', '1x DPOTY', '3x AS', '3x RS', '25x+ POTG', '5x DPOTG'],
+    stats: '4,307 PTS • 852 AST • 208 REB • 236 STL'
   },
   { 
-    name: 'TBD',
-    awards: ['TBD'],
-    stats: '— PTS • — AST • — REB • — STL'
+    name: 'Aim',
+    image: '/hof/aim.gif',
+    awards: ['HOF', '2x CHAMP', '2x FMVP', '1x MIP', '1x AS', '4x POTS', '25x+ POTG', '7x DPOTG' ],
+    stats: '2,461 PTS • 299 AST • 121 REB • 125 STL'
   }
 ];
+
 
