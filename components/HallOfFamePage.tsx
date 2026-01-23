@@ -1,5 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { hallOfFameMembers, HOFMember } from '../data/hof';
+
+/**
+ * Fisher-Yates shuffle algorithm to ensure an unbiased randomization
+ * of the player array.
+ */
+const shuffleArray = <T,>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 const HOFEligibility: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -152,6 +165,13 @@ const HOFCard: React.FC<{ member: HOFMember }> = ({ member }) => {
 };
 
 const HallOfFamePage: React.FC = () => {
+  /**
+   * We initialize the shuffled order on component mount (visit).
+   * Since this component is conditionally rendered by the parent router,
+   * a remount (visiting the page) will trigger a new shuffle.
+   */
+  const shuffledMembers = useMemo(() => shuffleArray(hallOfFameMembers), []);
+
   return (
     <div className="space-y-16 animate-page-enter pt-4">
 
@@ -164,8 +184,8 @@ const HallOfFamePage: React.FC = () => {
 
         {/* 1 col mobile, 2 col tablet, 3 col desktop */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {hallOfFameMembers.map((member, idx) => (
-            <HOFCard key={idx} member={member} />
+          {shuffledMembers.map((member) => (
+            <HOFCard key={member.name} member={member} />
           ))}
         </div>
       </div>
