@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { hallOfFameMembers, HOFMember } from '../data/hof';
 
@@ -63,8 +62,8 @@ const HOFCard: React.FC<{ member: HOFMember }> = ({ member }) => {
       >
         {/* Front Face */}
         <div className="absolute inset-0 backface-hidden bg-white dark:bg-zinc-900 border-2 border-zinc-100 dark:border-zinc-800 rounded-[2rem] overflow-hidden flex flex-col transition-colors">
-           {/* Image Section - Takes ~65% space for image focus */}
-           <div className="relative h-[65%] bg-zinc-50 dark:bg-zinc-800 overflow-hidden shrink-0">
+           {/* Image Section - Now takes 100% space */}
+           <div className="relative h-full bg-zinc-50 dark:bg-zinc-800 overflow-hidden shrink-0">
               <div className="absolute inset-0 bg-gradient-to-br from-zinc-100 via-zinc-200 to-zinc-300 dark:from-zinc-800 dark:via-zinc-900 dark:to-black opacity-50" />
               {member.image ? (
                 <img
@@ -88,22 +87,9 @@ const HOFCard: React.FC<{ member: HOFMember }> = ({ member }) => {
               
               {/* Name Overlay (Bottom of Image) */}
               <div className="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/80 to-transparent pt-12">
-                <h4 className="text-3xl font-black text-white tracking-tighter drop-shadow-md truncate">
+                <h4 className="text-3xl font-black text-[#D4AF37] tracking-tighter drop-shadow-md truncate">
                   {member.name}
                 </h4>
-              </div>
-           </div>
-
-           {/* Front Text Section - Compact */}
-           <div className="h-[35%] p-6 bg-white dark:bg-zinc-900 flex flex-col justify-between">
-              <div className="space-y-2">
-                 <div className="flex items-center justify-between">
-                    <span className="text-[9px] font-black uppercase tracking-[0.25em] text-zinc-300 dark:text-zinc-600">Overview</span>
-                    <div className="w-1.5 h-1.5 rounded-full bg-zinc-200 dark:bg-zinc-700" />
-                 </div>
-                 <p className="text-xs font-medium text-zinc-500 dark:text-zinc-400 italic leading-relaxed">
-                   {member.description || "Description coming soon."}
-                 </p>
               </div>
            </div>
         </div>
