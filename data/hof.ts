@@ -68,7 +68,7 @@ export const hallOfFameMembers: HOFMember[] = [
     image: '/hof/aim.gif',
     awards: ['HOF', '2x CHAMP', '2x FMVP', '1x MIP', '1x AS', '4x POTS', '25x+ POTG', '7x DPOTG' ],
     stats: '2,461 PTS • 299 AST • 121 REB • 125 STL'
-  }
+  },
 ];
 
 
