@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { westernStandings, easternStandings } from '../data/standings';
 import { useSettings } from '../context/SettingsContext';
@@ -9,9 +8,9 @@ const StandingsPage: React.FC = () => {
   const accentBgSoft = colors.bgSoft;
   const accentBg = colors.bg;
 
-  const formatWinPct = (w: number, l: number) => {
-    if (w + l === 0) return '.000';
-    const pct = (w / (w + l)).toFixed(3);
+  const formatWinPct = (w: any, l: any) => {
+    if (w === '' || l === '' || (Number(w) + Number(l) === 0)) return '';
+    const pct = (Number(w) / (Number(w) + Number(l))).toFixed(3);
     return pct.startsWith('0') ? pct.substring(1) : pct;
   };
 
@@ -43,26 +42,28 @@ const StandingsPage: React.FC = () => {
                 <div className="text-right">gb</div>
               </div>
               <div className="divide-y divide-zinc-100 dark:divide-zinc-800/50">
-                {conf.data.map((row) => {
-                  const isFavorite = settings.favoriteTeam === row.team;
+                {conf.data.map((row, idx) => {
+                  const isFavorite = settings.favoriteTeam && settings.favoriteTeam === row.team;
+                  const isPlayoffPosition = idx < 4;
+                  
                   // If favorite, add specific highlighting
                   const favClass = isFavorite 
                     ? `bg-[#FFFF00]/10 dark:bg-[#FFFF00]/10 ring-1 ring-inset ring-[#FFFF00]/30 z-10 relative` 
-                    : row.rank <= 4 
-                      ? `${accentBgSoft} shadow-[inset_4px_0_0_currentColor] text-inherit` // accent color handled by text color inheritance if needed, but accentBgSoft sets bg
+                    : isPlayoffPosition 
+                      ? `${accentBgSoft} shadow-[inset_4px_0_0_currentColor] text-inherit` 
                       : '';
                   
-                  // For the shadow strip color in rank <=4, use inline style or specific class if dynamic
-                  const stripStyle = row.rank <= 4 && !isFavorite ? { boxShadow: `inset 4px 0 0 ${settings.rahBizzyTheme ? '#3B82F6' : '#D60A07'}` } : {};
+                  // For the shadow strip color in top 4 rows, maintain logic using index
+                  const stripStyle = isPlayoffPosition && !isFavorite ? { boxShadow: `inset 4px 0 0 ${settings.rahBizzyTheme ? '#3B82F6' : '#D60A07'}` } : {};
 
                   return (
-                    <React.Fragment key={row.team}>
+                    <React.Fragment key={idx}>
                       <div 
-                        className={`grid grid-cols-[2.5rem_1fr_2.5rem_2.5rem_3.5rem] md:grid-cols-[3rem_1fr_4rem_4rem_5rem_4rem] px-4 md:px-6 ${paddingY} items-center hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30 transition-colors ${favClass} ${!isFavorite && row.rank <= 4 ? accentBgSoft : ''}`}
+                        className={`grid grid-cols-[2.5rem_1fr_2.5rem_2.5rem_3.5rem] md:grid-cols-[3rem_1fr_4rem_4rem_5rem_4rem] px-4 md:px-6 ${paddingY} items-center hover:bg-zinc-50/50 dark:hover:bg-zinc-800/30 transition-colors ${favClass} ${!isFavorite && isPlayoffPosition ? accentBgSoft : ''}`}
                         style={stripStyle}
                       >
                         <div className="text-xs md:text-sm font-black text-zinc-300 dark:text-zinc-600">
-                          {row.rank.toString().padStart(2, '0')}
+                          {row.rank}
                         </div>
                         <div className="text-xs md:text-sm font-bold text-zinc-800 dark:text-zinc-200 truncate flex items-center gap-2">
                           {row.team}
@@ -75,7 +76,7 @@ const StandingsPage: React.FC = () => {
                         </div>
                         <div className="text-xs md:text-sm font-black text-zinc-900 dark:text-zinc-100 text-right tabular-nums">{row.gb}</div>
                       </div>
-                      {row.rank === 4 && (
+                      {idx === 3 && (
                         <div className="relative py-2 flex items-center justify-center bg-zinc-50/30 dark:bg-zinc-900/50 overflow-hidden">
                           <div className="absolute inset-0 flex items-center px-4" aria-hidden="true">
                             <div className="w-full border-t-2 border-dashed border-zinc-200 dark:border-zinc-700"></div>
@@ -108,3 +109,4 @@ const StandingsPage: React.FC = () => {
 };
 
 export default StandingsPage;
+
