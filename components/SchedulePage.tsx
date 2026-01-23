@@ -1,10 +1,9 @@
-
 import React, { useState } from 'react';
 import { scheduleData } from '../data/schedule';
 import { teamShortNames } from '../data/standings';
 import { useSettings } from '../context/SettingsContext';
 
-const SEASON_PREFIX = 'S11';
+const SEASON_PREFIX = 'S12';
 
 const SchedulePage: React.FC = () => {
   const { settings, getThemeColors } = useSettings();
