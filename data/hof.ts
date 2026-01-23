@@ -48,7 +48,7 @@ export const hallOfFameMembers: HOFMember[] = [
   { 
     name: 'Rah',
     image: '/hof/rah.gif',
-    awards: ['HOF', '2x CHAMP', '1x MVP' '1x FMVP', '4x AS', '2x RS', '7x POTS', '25x+ POTG', '15x+ DPOTG'],
+    awards: ['HOF', '2x CHAMP', '1x MVP', '1x FMVP', '4x AS', '2x RS', '7x POTS', '25x+ POTG', '15x+ DPOTG'],
     stats: '2,743 PTS • 221 AST • 244 REB • 315 STL'
   },
   { 
@@ -68,7 +68,7 @@ export const hallOfFameMembers: HOFMember[] = [
     image: '/hof/aim.gif',
     awards: ['HOF', '2x CHAMP', '2x FMVP', '1x MIP', '1x AS', '4x POTS', '25x+ POTG', '7x DPOTG' ],
     stats: '2,461 PTS • 299 AST • 121 REB • 125 STL'
-  },
+  }
 ];
 
 
